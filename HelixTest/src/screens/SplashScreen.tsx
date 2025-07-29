@@ -130,11 +130,9 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
             ]}
           >
             <Text style={styles.appName}>
-              HelixTest
+              Helix Digital
             </Text>
-            <Text style={styles.tagline}>
-              Experience Excellence
-            </Text>
+      
           </Animated.View>
 
           <Animated.View
