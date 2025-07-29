@@ -1,97 +1,122 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# HelixTest React Native App
 
-# Getting Started
+## Setup Instructions
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+### Prerequisites
 
-## Step 1: Start Metro
+- Node.js >= 18
+- iOS development environment (Xcode, iOS Simulator)
+- CocoaPods (for iOS dependencies)
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### Installation
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+1. **Clone and navigate to the project:**
+   ```bash
+   cd HelixTest
+   ```
 
-```sh
-# Using npm
-npm start
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-# OR using Yarn
-yarn start
-```
+3. **Install iOS dependencies:**
+   ```bash
+   cd ios && pod install && cd ..
+   ```
 
-## Step 2: Build and run your app
+4. **Run the application:**
+   ```bash
+   # Start the Metro bundler
+   npm start
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+   # Run on iOS simulator (in another terminal)
+   npm run ios
+   ```
 
-### Android
+### Available Scripts
 
-```sh
-# Using npm
-npm run android
+- `npm start` - Start Metro bundler with cache reset
+- `npm run ios` - Run on iOS simulator
+- `npm run android` - Run on Android emulator
+- `npm run lint` - Run ESLint
+- `npm run typecheck` - Run TypeScript type checking
+- `npm test` - Run Jest tests
 
-# OR using Yarn
-yarn android
-```
+## Architecture Decisions
 
-### iOS
+### Core Technologies
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+- **React Native 0.80.2** - Latest stable version for optimal performance
+- **TypeScript** - Type safety and better development experience
+- **Redux Toolkit** - State management with modern Redux patterns
+- **React Navigation** - Navigation with bottom tabs
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### State Management
 
-```sh
-bundle install
-```
+- **Redux Toolkit**: Centralized state management for user data and app settings
+- **Custom Persistence Middleware**: Automatically saves state changes to AsyncStorage
+- **Selective State Persistence**: Only persists relevant data (user profile, app settings)
 
-Then, and every time you update your native dependencies, run:
+### Data Persistence Strategy
 
-```sh
-bundle exec pod install
-```
+- **AsyncStorage**: Primary storage for user data and app state
+- **Custom API Service**: Mock API that integrates with persisted data
+- **Offline Service**: Caches data and queues operations for offline support
+- **Network State Monitoring**: Uses NetInfo to detect connectivity changes
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### Theme System
 
-```sh
-# Using npm
-npm run ios
+- **Centralized Colors**: Single source of truth in `colors.ts`
+- **Dynamic Themes**: Light and dark theme support with theme context
+- **Theme-Aware Components**: All components automatically adapt to theme changes
 
-# OR using Yarn
-yarn ios
-```
+### Component Architecture
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+- **Atomic Design Pattern**: Organized components from basic atoms to complex organisms
+- **Reusable UI Components**: Button, Input, Card, Text components with consistent APIs
+- **Custom Hooks**: Theme and form management hooks for clean component logic
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Services Layer
 
-## Step 3: Modify your app
+- **Haptic Service**: iOS haptic feedback with fallback for Android
+- **Offline Service**: Data caching and offline operation queuing
+- **Persistence Service**: Redux state serialization and storage
+- **API Service**: Mock API with realistic async operations
 
-Now that you have successfully run the app, let's make changes!
+### Form Management
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+- **React Hook Form**: Performant forms with minimal re-renders
+- **Yup Validation**: Schema-based form validation
+- **Real-time Validation**: Immediate feedback on form errors
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Known Limitations
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### Technical Limitations
 
-## Congratulations! :tada:
+1. **iOS-Only Haptic Feedback**: Haptic feedback only works on iOS devices, gracefully falls back on Android
+2. **Mock API**: Uses simulated API responses instead of real backend integration
+3. **Limited Offline Functionality**: Offline queue is basic and doesn't handle complex conflict resolution 
+4. **Image Upload Simulation**: Profile picture upload is mocked with local storage
 
-You've successfully run and modified your React Native App. :partying_face:
+### Data Persistence Limitations
 
-### Now what?
+1. **AsyncStorage Size Limits**: Large data sets may hit AsyncStorage limitations
+2. **No Data Encryption**: Stored data is not encrypted (fine for demo purposes)
+3. **State Serialization**: Complex objects may not serialize properly
+4. **No Backup/Restore**: No cloud backup or device-to-device data transfer
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### UI/UX Limitations
 
-# Troubleshooting
+1. **Single Theme Toggle**: No system theme following (manual dark/light mode only)
+2. **Basic Loading States**: Simple loading indicators without skeleton screens on all components
+3. **Limited Accessibility**: Basic accessibility support, not fully optimized
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## Future Improvements
 
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- Real backend API integration
+- Enhanced offline conflict resolution
+- Comprehensive accessibility improvements
+- Advanced error handling and monitoring
+- Performance optimizations
+- Comprehensive test suite
