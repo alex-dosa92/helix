@@ -115,10 +115,10 @@ export const Input: React.FC<InputProps> = ({
         {showCharCount && maxLength && (
           <AppText 
             variant="caption" 
-            style={[
-              styles.charCount,
-              { color: theme.textSecondary }
-            ]}
+            style={{
+              ...styles.charCount,
+              color: theme.textSecondary
+            }}
           >
             {(value?.length || 0)}/{maxLength} characters
           </AppText>

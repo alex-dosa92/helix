@@ -44,7 +44,6 @@ export const profileScreenStyles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     right: 0,
-    backgroundColor: Colors.primary,
     borderRadius: 20,
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -96,7 +95,6 @@ export const profileScreenStyles = StyleSheet.create({
     marginLeft: 5,
   },
   editButton: {
-    backgroundColor: Colors.primary,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 30,
@@ -176,13 +174,9 @@ export const profileScreenStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   formCancelButton: {
-    backgroundColor: Colors.white,
     marginRight: 10,
-    borderWidth: 1,
-    borderColor: Colors.gray[300],
   },
   saveButton: {
-    backgroundColor: Colors.primary,
     marginLeft: 10,
   },
   buttonDisabled: {
@@ -238,10 +232,8 @@ export const profileScreenStyles = StyleSheet.create({
     minWidth: 80,
   },
   modalCancelButton: {
-    backgroundColor: Colors.gray[300],
   },
   doneButton: {
-    backgroundColor: Colors.primary,
   },
   modalCancelButtonText: {
     textAlign: 'center',

@@ -79,23 +79,21 @@ export const SettingItem: React.FC<SettingItemProps> = ({
           <AppText 
             variant="body" 
             weight="semibold"
-            style={[
-              styles.settingTitle,
-              { color: disabled ? theme.textSecondary : theme.text }
-            ]}
+            style={{
+              ...styles.settingTitle,
+              color: disabled ? theme.textSecondary : theme.text
+            }}
           >
             {title}
           </AppText>
           {subtitle && (
             <AppText 
               variant="caption" 
-              style={[
-                styles.settingSubtitle,
-                { 
-                  color: disabled ? theme.textSecondary : theme.textSecondary,
-                  lineHeight: 18,
-                }
-              ]}
+              style={{
+                ...styles.settingSubtitle,
+                color: disabled ? theme.textSecondary : theme.textSecondary,
+                lineHeight: 18,
+              }}
             >
               {subtitle}
             </AppText>
@@ -183,23 +181,21 @@ export const NotificationSettingItem: React.FC<NotificationSettingItemProps> = (
           <AppText 
             variant="body" 
             weight="semibold"
-            style={[
-              styles.itemTitle,
-              { color: disabled ? theme.textSecondary : theme.text }
-            ]}
+            style={{
+              ...styles.itemTitle,
+              color: disabled ? theme.textSecondary : theme.text
+            }}
           >
             {props.title}
           </AppText>
           {props.subtitle && (
             <AppText 
               variant="caption" 
-              style={[
-                styles.itemSubtitle,
-                { 
-                  color: disabled ? theme.textSecondary : theme.textSecondary,
-                  lineHeight: 18,
-                }
-              ]}
+              style={{
+                ...styles.itemSubtitle,
+                color: disabled ? theme.textSecondary : theme.textSecondary,
+                lineHeight: 18,
+              }}
             >
               {props.subtitle}
             </AppText>
